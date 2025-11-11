@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pedido Especial - Flores San Valentín</title>
+    <link rel="stylesheet" href="./src/styles/special.pcss">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Borel&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;700&display=swap" rel="stylesheet">
+    <!-- bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</head>
+<body>
+    <header class="main-header">
+        <div class="top-bar">
+            <div class="container">
+                <div class="contact-info">
+                    <span><i class="fas fa-phone"></i> +57 300 123 4567</span>
+                    <span><i class="fas fa-envelope"></i> info@floresvalentin.com</span>
+                </div>
+                <div class="top-bar-right">
+                    <div class="opening-hours">
+                        <i class="fas fa-clock"></i> Lun - Vie: 9:00 - 20:00
+                        | Sab: 9:00 - 18:00 | Dom: 10:00 - 14:00
+                    </div>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-whatsapp"></i></a>
+        
+                        <button id="theme-toggle" aria-label="Cambiar tema">
+                            <i class="fas fa-moon"></i>
+                        </button>
+                    </div>
+                </div>
+                <!-- Botones de cierre de sesión -->
+                <button id="logout-button" class="auth-button">
+                    <i class="fas fa-sign-out-alt"></i> Cerrar sesión
+                </button>
+            </div>
+        </div>
+    
+        <div class="main-header-content">
+            <div class="container">
+                <div class="logo-container">
+                    <img src="/images/logo.svg" alt="Flores San Valentín" class="logo">
+                    <div class="brand-text">
+                        <h1>Flores San Valentín</h1>
+                        <p>Arreglos florales únicos y personalizados</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    
+    <!-- Espacio reservado para el menú sticky -->
+    <nav class="navbar navbar-expand-lg sticky-top">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="./index.html">Inicio</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link" href="./catalog.html">Catálogo</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container my-5">
+        <div class="row">
+            <div class="col-lg-8 mx-auto">
+                <div class="card shadow-sm">
+                    <div class="card-header bg-primary text-white">
+                        <h2 class="mb-0"><i class="fas fa-gift me-2"></i>Pedido Especial</h2>
+                    </div>
+                    <div class="card-body">
+                        <p class="lead mb-4">Cuéntanos sobre tu ocasión especial y crearemos un arreglo floral único para ti.</p>
+                        
+                        <form id="special-order-form">
+                            <h4 class="mb-3">Información del destinatario</h4>
+                            <div class="row mb-3">
+                                <div class="col-md-6">
+                                    <label for="recipient-name" class="form-label">Nombre del destinatario*</label>
+                                    <input type="text" class="form-control" id="recipient-name" required>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="recipient-phone" class="form-label">Teléfono del destinatario</label>
+                                    <input type="tel" class="form-control" id="recipient-phone">
+                                </div>
+                            </div>
+                            
+                            <!-- Nuevo campo para la dirección de destino -->
+                            <div class="row mb-3">
+                                <div class="col-12">
+                                    <label for="delivery-address" class="form-label">Dirección de entrega*</label>
+                                    <input type="text" class="form-control" id="delivery-address" required>
+                                </div>
+                            </div>
+                            
+                            <div class="row mb-3">
+                                <div class="col-md-6">
+                                    <label for="delivery-city" class="form-label">Ciudad*</label>
+                                    <input type="text" class="form-control" id="delivery-city" required>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="delivery-postal-code" class="form-label">Código postal</label>
+                                    <input type="text" class="form-control" id="delivery-postal-code">
+                                </div>
+                            </div>
+                            
+                            <h4 class="mb-3">Detalles del pedido</h4>
+                            <div class="row mb-3">
+                                <div class="col-md-6">
+                                    <label for="occasion" class="form-label">Ocasión*</label>
+                                    <select class="form-select" id="occasion" required>
+                                        <option value="" selected disabled>Selecciona una ocasión</option>
+                                        <option value="Cumpleaños">Cumpleaños</option>
+                                        <option value="Aniversario">Aniversario</option>
+                                        <option value="Boda">Boda</option>
+                                        <option value="Graduación">Graduación</option>
+                                        <option value="Condolencias">Condolencias</option>
+                                        <option value="Declaración de amor">Declaración de amor</option>
+                                        <option value="Reconciliación">Reconciliación</option>
+                                        <option value="Otro">Otro</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="budget" class="form-label">Presupuesto aproximado ($)</label>
+                                    <input type="number" class="form-control" id="budget" min="0" step="10000">
+                                </div>
+                            </div>
+                            
+                            <div class="row mb-3">
+                                <div class="col-md-6">
+                                    <label for="delivery-date" class="form-label">Fecha de entrega*</label>
+                                    <input type="date" class="form-control" id="delivery-date" required>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="delivery-time" class="form-label">Hora aproximada de entrega</label>
+                                    <select class="form-select" id="delivery-time">
+                                        <option value="" selected disabled>Selecciona una hora</option>
+                                        <option value="Mañana (9:00 - 12:00)">Mañana (9:00 - 12:00)</option>
+                                        <option value="Tarde (12:00 - 17:00)">Tarde (12:00 - 17:00)</option>
+                                        <option value="Noche (17:00 - 20:00)">Noche (17:00 - 20:00)</option>
+                                    </select>
+                                </div>
+                            </div>
+                            
+                            <!-- Productos para incluir (NUEVO) -->
+                            <h4 class="mb-3">Productos para incluir</h4>
+                            <div class="row mb-3">
+                                <div class="col-12">
+                                    <div class="form-check form-switch mb-2">
+                                        <input class="form-check-input" type="checkbox" id="include-flowers" checked>
+                                        <label class="form-check-label fw-bold" for="include-flowers">Incluir flores</label>
+                                    </div>
+                                    <div id="flowers-options" class="ms-4 mb-3">
+                                        <label class="form-label">Tipos de flores (selecciona hasta 3)</label>
+                                        <div class="row">
+                                            <div class="col-md-4">
+                                                <div class="form-check">
+                                                    <input class="form-check-input flower-pref" type="checkbox" value="Rosas" id="roses">
+                                                    <label class="form-check-label" for="roses">Rosas</label>
+                                                </div>
+                                                <div class="form-check">
+                                                    <input class="form-check-input flower-pref" type="checkbox" value="Tulipanes" id="tulips">
+                                                    <label class="form-check-label" for="tulips">Tulipanes</label>
+                                                </div>
+                                                <div class="form-check">
+                                                    <input class="form-check-input flower-pref" type="checkbox" value="Girasoles" id="sunflowers">
+                                                    <label class="form-check-label" for="sunflowers">Girasoles</label>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="form-check">
+                                                    <input class="form-check-input flower-pref" type="checkbox" value="Lirios" id="lilies">
+                                                    <label class="form-check-label" for="lilies">Lirios</label>
+                                                </div>
+                                                <div class="form-check">
+                                                    <input class="form-check-input flower-pref" type="checkbox" value="Orquídeas" id="orchids">
+                                                    <label class="form-check-label" for="orchids">Orquídeas</label>
+                                                </div>
+                                                <div class="form-check">
+                                                    <input class="form-check-input flower-pref" type="checkbox" value="Claveles" id="carnations">
+                                                    <label class="form-check-label" for="carnations">Claveles</label>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="form-check">
+                                                    <input class="form-check-input flower-pref" type="checkbox" value="Margaritas" id="daisies">
+                                                    <label class="form-check-label" for="daisies">Margaritas</label>
+                                                </div>
+                                                <div class="form-check">
+                                                    <input class="form-check-input flower-pref" type="checkbox" value="Hortensias" id="hydrangeas">
+                                                    <label class="form-check-label" for="hydrangeas">Hortensias</label>
+                                                </div>
+                                                <div class="form-check">
+                                                    <input class="form-check-input flower-pref" type="checkbox" value="Otra" id="other-flower">
+                                                    <label class="form-check-label" for="other-flower">Otra</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                        <label class="form-label mt-3">Colores preferidos (selecciona hasta 3)</label>
+                                        <div class="row">
+                                            <div class="col-md-4">
+                                                <div class="form-check">
+                                                    <input class="form-check-input color-pref" type="checkbox" value="Rojo" id="red">
+                                                    <label class="form-check-label" for="red">Rojo</label>
+                                                </div>
+                                                <div class="form-check">
+                                                    <input class="form-check-input color-pref" type="checkbox" value="Rosa" id="pink">
+                                                    <label class="form-check-label" for="pink">Rosa</label>
+                                                </div>
+                                                <div class="form-check">
+                                                    <input class="form-check-input color-pref" type="checkbox" value="Blanco" id="white">
+                                                    <label class="form-check-label" for="white">Blanco</label>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="form-check">
+                                                    <input class="form-check-input color-pref" type="checkbox" value="Amarillo" id="yellow">
+                                                    <label class="form-check-label" for="yellow">Amarillo</label>
+                                                </div>
+                                                <div class="form-check">
+                                                    <input class="form-check-input color-pref" type="checkbox" value="Naranja" id="orange">
+                                                    <label class="form-check-label" for="orange">Naranja</label>
+                                                </div>
+                                                <div class="form-check">
+                                                    <input class="form-check-input color-pref" type="checkbox" value="Morado" id="purple">
+                                                    <label class="form-check-label" for="purple">Morado</label>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="form-check">
+                                                    <input class="form-check-input color-pref" type="checkbox" value="Azul" id="blue">
+                                                    <label class="form-check-label" for="blue">Azul</label>
+                                                </div>
+                                                <div class="form-check">
+                                                    <input class="form-check-input color-pref" type="checkbox" value="Verde" id="green">
+                                                    <label class="form-check-label" for="green">Verde</label>
+                                                </div>
+                                                <div class="form-check">
+                                                    <input class="form-check-input color-pref" type="checkbox" value="Otro" id="other-color">
+                                                    <label class="form-check-label" for="other-color">Otro</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="form-check form-switch mb-2">
+                                        <input class="form-check-input" type="checkbox" id="include-chocolates">
+                                        <label class="form-check-label fw-bold" for="include-chocolates">Incluir chocolates</label>
+                                    </div>
+                                    <div id="chocolates-options" class="ms-4 mb-3 d-none">
+                                        <label class="form-label">Tipos de chocolates (selecciona hasta 2)</label>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-check">
+                                                    <input class="form-check-input chocolate-pref" type="checkbox" value="Trufas" id="truffles">
+                                                    <label class="form-check-label" for="truffles">Trufas</label>
+                                                </div>
+                                                <div class="form-check">
+                                                    <input class="form-check-input chocolate-pref" type="checkbox" value="Bombones" id="pralines">
+                                                    <label class="form-check-label" for="pralines">Bombones</label>
+                                                </div>
+                                                <div class="form-check">
+                                                    <input class="form-check-input chocolate-pref" type="checkbox" value="Chocolate Belga" id="belgian">
+                                                    <label class="form-check-label" for="belgian">Chocolate Belga</label>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-check">
+                                                    <input class="form-check-input chocolate-pref" type="checkbox" value="Chocolate Suizo" id="swiss">
+                                                    <label class="form-check-label" for="swiss">Chocolate Suizo</label>
+                                                </div>
+                                                <div class="form-check">
+                                                    <input class="form-check-input chocolate-pref" type="checkbox" value="Chocolate Artesanal" id="artisan">
+                                                    <label class="form-check-label" for="artisan">Chocolate Artesanal</label>
+                                                </div>
+                                                <div class="form-check">
+                                                    <input class="form-check-input chocolate-pref" type="checkbox" value="Chocolate con Licor" id="liquor">
+                                                    <label class="form-check-label" for="liquor">Chocolate con Licor</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="form-check form-switch mb-2">
+                                        <input class="form-check-input" type="checkbox" id="include-plushies">
+                                        <label class="form-check-label fw-bold" for="include-plushies">Incluir peluches</label>
+                                    </div>
+                                    <div id="plushies-options" class="ms-4 mb-3 d-none">
+                                        <label class="form-label">Tipo de peluche</label>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-check">
+                                                    <input class="form-check-input plushie-pref" type="radio" name="plushie-type" value="Oso de Peluche" id="teddy">
+                                                    <label class="form-check-label" for="teddy">Oso de Peluche</label>
+                                                </div>
+                                                <div class="form-check">
+                                                    <input class="form-check-input plushie-pref" type="radio" name="plushie-type" value="Conejo de Peluche" id="rabbit">
+                                                    <label class="form-check-label" for="rabbit">Conejo de Peluche</label>
+                                                </div>
+                                                <div class="form-check">
+                                                    <input class="form-check-input plushie-pref" type="radio" name="plushie-type" value="Unicornio de Peluche" id="unicorn">
+                                                    <label class="form-check-label" for="unicorn">Unicornio de Peluche</label>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-check">
+                                                    <input class="form-check-input plushie-pref" type="radio" name="plushie-type" value="Panda de Peluche" id="panda">
+                                                    <label class="form-check-label" for="panda">Panda de Peluche</label>
+                                                </div>
+                                                <div class="form-check">
+                                                    <input class="form-check-input plushie-pref" type="radio" name="plushie-type" value="Perrito de Peluche" id="dog">
+                                                    <label class="form-check-label" for="dog">Perrito de Peluche</label>
+                                                </div>
+                                                <div class="form-check">
+                                                    <input class="form-check-input plushie-pref" type="radio" name="plushie-type" value="Gatito de Peluche" id="cat">
+                                                    <label class="form-check-label" for="cat">Gatito de Peluche</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="form-check form-switch mb-2">
+                                        <input class="form-check-input" type="checkbox" id="include-gifts">
+                                        <label class="form-check-label fw-bold" for="include-gifts">Incluir otros regalos</label>
+                                    </div>
+                                    <div id="gifts-options" class="ms-4 mb-3 d-none">
+                                        <label class="form-label">Selecciona otros regalos (selecciona hasta 2)</label>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-check">
+                                                    <input class="form-check-input gift-pref" type="checkbox" value="Tarjeta Personalizada" id="card">
+                                                    <label class="form-check-label" for="card">Tarjeta Personalizada</label>
+                                                </div>
+                                                <div class="form-check">
+                                                    <input class="form-check-input gift-pref" type="checkbox" value="Velas Aromáticas" id="candles">
+                                                    <label class="form-check-label" for="candles">Velas Aromáticas</label>
+                                                </div>
+                                                <div class="form-check">
+                                                    <input class="form-check-input gift-pref" type="checkbox" value="Joyería" id="jewelry">
+                                                    <label class="form-check-label" for="jewelry">Joyería</label>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-check">
+                                                    <input class="form-check-input gift-pref" type="checkbox" value="Perfume" id="perfume">
+                                                    <label class="form-check-label" for="perfume">Perfume</label>
+                                                </div>
+                                                <div class="form-check">
+                                                    <input class="form-check-input gift-pref" type="checkbox" value="Set de Vinos" id="wine">
+                                                    <label class="form-check-label" for="wine">Set de Vinos</label>
+                                                </div>
+                                                <div class="form-check">
+                                                    <input class="form-check-input gift-pref" type="checkbox" value="Globos" id="balloons">
+                                                    <label class="form-check-label" for="balloons">Globos</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="mb-3">
+                                <label for="message" class="form-label">Mensaje para la tarjeta (opcional)</label>
+                                <textarea class="form-control" id="message" rows="3" maxlength="200"></textarea>
+                                <div class="form-text">Máximo 200 caracteres</div>
+                            </div>
+                            
+                            <div class="mb-3">
+                                <label for="special-instructions" class="form-label">Instrucciones especiales o detalles adicionales</label>
+                                <textarea class="form-control" id="special-instructions" rows="3"></textarea>
+                            </div>
+                            
+                            <div class="alert alert-info" role="alert">
+                                <i class="fas fa-info-circle me-2"></i> Nos comunicaremos contigo dentro de las próximas 24 horas para confirmar los detalles y el precio final de tu pedido especial.
+                            </div>
+                            
+                            <div class="d-grid gap-2">
+                                <button type="submit" class="btn btn-primary btn-lg">
+                                    <i class="fas fa-paper-plane me-2"></i> Enviar Pedido Especial
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="main-footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Sobre Nosotros</h3>
+                <p>Somos especialistas en arreglos florales únicos y personalizados. Con más de 15 años de experiencia llevando belleza y color a momentos especiales.</p>                
+            </div>
+            
+            <div class="footer-section">
+                <h3>Horario de Atención</h3>
+                <ul class="footer-hours">
+                    <li>Lunes a Viernes: 9:00 - 20:00</li>
+                    <li>Sábados: 9:00 - 18:00</li>
+                    <li>Domingos: 10:00 - 14:00</li>
+                </ul>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Contacto</h3>
+                <ul class="footer-contact">
+                    <li><i class="fas fa-map-marker-alt"></i> Av. Principal 123, Ciudad</li>
+                    <li><i class="fas fa-phone"></i> +57 300 123 4567</li>
+                    <li><i class="fas fa-envelope"></i> info@floresvalentin.com</li>
+                </ul>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Síguenos</h3>
+                <div class="social-links">
+                    <a href="#" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" title="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="#" title="Twitter"><i class="fab fa-twitter"></i></a>
+                    <a href="#" title="Pinterest"><i class="fab fa-pinterest-p"></i></a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p>&copy; 2025 Flores para San Valentín. Todos los derechos reservados.</p>
+            <div class="footer-links">
+                <a href="#">Política de Privacidad</a>
+                <a href="#">Términos y Condiciones</a>
+                <a href="#">Política de Cookies</a>
+            </div>
+        </div>
+    </footer>
+    
+    <button id="float-button">
+        <i class="fab fa-whatsapp"></i>
+    </button>
+    
+    <script type="module" src="/src/scripts/special-order.js"></script>
+    <script type="module" src="/src/scripts/theme.js"></script>
+    <script type="module" src="/src/scripts/checkAuth.js"></script>
+    <script type="module" src="/src/scripts/main.js"></script>
+</body>
+</html>
